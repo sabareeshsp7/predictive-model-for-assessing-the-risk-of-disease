@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Set page config
-st.set_page_config(page_title="Health Risk Prediction", page_icon="🏥", layout="wide")
+st.set_page_config(page_title="Diabetes Prognosis and Risk Assessment System", page_icon="🏥", layout="wide")
 
 
 # Load the model and scaler
@@ -54,11 +54,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Title
-st.title("Health Risk Prediction")
+st.title("Diabetes Prognosis and Risk Assessment System")
 
 # Sidebar
 st.sidebar.header("About")
-st.sidebar.info("This app uses a Logistic Regression model to predict health risks based on various factors.")
+st.sidebar.info("This app uses a Gradient Booster Model to predict health risks based on various factors.")
 
 # Input fields
 st.subheader("Enter Patient Details")
@@ -95,9 +95,9 @@ with col3:
                               "College 1 year to 3 years (Some college or technical school)",
                               "College 4 years or more (College graduate)"])
     income = st.selectbox("Income",
-                          ["Less than $10,000", "$10,000 to less than $15,000", "$15,000 to less than $20,000",
-                           "$20,000 to less than $25,000", "$25,000 to less than $35,000",
-                           "$35,000 to less than $50,000", "$50,000 to less than $75,000", "$75,000 or more"])
+                          ["Less than Rs10,000", "Rs10,000 to less than Rs15,000", "Rs15,000 to less than $20,000",
+                           "Rs20,000 to less than Rs25,000", "Rs25,000 to less than Rs35,000",
+                           "Rs35,000 to less than Rs50,000", "Rs50,000 to less than Rs75,000", "Rs75,000 or more"])
 
 # Prediction button
 if st.button("Predict Health Risk"):
@@ -126,9 +126,9 @@ if st.button("Predict Health Risk"):
                       "Grades 9 through 11 (Some high school)", "Grade 12 or GED (High school graduate)",
                       "College 1 year to 3 years (Some college or technical school)",
                       "College 4 years or more (College graduate)"].index(education) + 1,
-        'Income': ["Less than $10,000", "$10,000 to less than $15,000", "$15,000 to less than $20,000",
-                   "$20,000 to less than $25,000", "$25,000 to less than $35,000", "$35,000 to less than $50,000",
-                   "$50,000 to less than $75,000", "$75,000 or more"].index(income) + 1
+        'Income': ["Less than Rs10,000", "Rs10,000 to less than Rs15,000", "Rs15,000 to less than $20,000",
+                           "Rs20,000 to less than Rs25,000", "Rs25,000 to less than Rs35,000",
+                           "Rs35,000 to less than Rs50,000", "Rs50,000 to less than Rs75,000", "Rs75,000 or more"].index(income) + 1
     }
 
     # Create DataFrame and ensure correct feature order
@@ -144,7 +144,7 @@ if st.button("Predict Health Risk"):
     # Display result
     st.subheader("Prediction Result")
     if prediction == 0:
-        st.success("The patient is not at risk of disease.")
+        st.success("The patient is not at risk of diabetes.")
     elif prediction == 1:
         st.warning("The patient is at mild risk of diabetes.")
     else:
